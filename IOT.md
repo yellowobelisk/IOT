@@ -1,9 +1,67 @@
 ## Basic Logic Gates
-```
+<img width="957" alt="image" src="https://github.com/yellowobelisk/IOT/assets/115936701/adfdb861-be61-4505-baac-5a91fbf18313">
 
 ```
-
-
+int InputA = 0;
+int InputB = 0;
+void setup(){
+  pinMode(6, INPUT);
+  pinMode(4, INPUT);
+  pinMode(10, OUTPUT);
+}
+void loop(){
+  InputA = digitalRead(6);
+  InputB = digitalRead(4);
+  
+//----------------------------------------------------------------
+  
+//------------AND GATE--------------------
+  //if(InputA == HIGH && InputB == HIGH){
+    //digitalWrite(10, HIGH);
+  //}else{
+    //digitalWrite(10, LOW);
+  //}
+  
+//----------OR GATE------------------------
+  //if(InputA == HIGH || InputB == HIGH){
+    //digitalWrite(10, HIGH);
+  //}else{
+    //digitalWrite(10, LOW);
+  //}
+  
+//-----------NAND GATE---------------------
+  //if(InputA == HIGH && InputB == HIGH){
+    //digitalWrite(10, LOW);
+  //}else{
+    //digitalWrite(10, HIGH);
+  //}
+  
+//-----------NOR GATE---------------------
+  //if(InputA == LOW && InputB == LOW){
+    //digitalWrite(10, HIGH);
+  //}else{
+    //digitalWrite(10, LOW);
+  //}
+  
+//-----------XOR GATE---------------------
+  //if((InputA == LOW && InputB == HIGH) || (InputA == HIGH && InputB == LOW)){
+    //digitalWrite(10, HIGH);
+  //}else{
+    //digitalWrite(10, LOW);
+  //
+  
+//-----------XNOR GATE---------------------
+  //if((InputA == LOW && InputB == LOW) || (InputA == HIGH && InputB == HIGH)){
+    //digitalWrite(10, HIGH);
+  //}else{
+    //digitalWrite(10, LOW);
+  //}
+  
+//----------------------------------------------------------------
+  
+  delay(10);
+}
+```
 
 
 ## 2. Blinking of LED
