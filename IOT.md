@@ -378,7 +378,60 @@ void loop()
   delay(1000); 
 }
 ```
-7. Ping Pong Game
+
+# Gas Sesnor
+<img width="929" alt="image" src="https://github.com/yellowobelisk/IOT/assets/115936701/4c234be0-3420-4c9b-bea9-1be36c4f9e88">
+```
+#define BUZZER_PIN  13
+
+// Pin 13 has an LED connected on most Arduino boards.
+// give it a name:
+#define PIN_LED_1 	6
+#define PIN_LED_2 	5
+#define PIN_LED_3 	4
+#define PIN_LED_4 	3
+#define PIN_LED_5 	2
+#define PIN_GAS 	A3
+
+// the setup routine runs once when you press reset:
+void setup() {
+  // initialize the digital pin as an output.
+  pinMode(PIN_LED_1, OUTPUT);
+  pinMode(PIN_LED_2, OUTPUT);
+  pinMode(PIN_LED_3, OUTPUT);
+  pinMode(PIN_LED_4, OUTPUT);
+  pinMode(PIN_LED_5, OUTPUT);
+  Serial.begin(9600);
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  
+  long frequency;
+  
+  int value = map(analogRead(PIN_GAS), 300, 750, 0, 100);
+  digitalWrite(PIN_LED_1, HIGH);
+   digitalWrite(PIN_LED_2, value >= 20 ? HIGH : LOW);
+  digitalWrite(PIN_LED_3, value >= 40 ? HIGH : LOW);
+  digitalWrite(PIN_LED_4, value >= 60 ? HIGH : LOW);
+  digitalWrite(PIN_LED_5, value >= 80 ? HIGH : LOW);
+  
+  frequency = map(value, 0, 1023, 1500, 2500);
+  // заставляем пин с пищалкой «вибрировать», т.е. звучать
+  // (англ. tone) на заданной частоте 20 миллисекунд. При
+  // cледующих проходах loop, tone будет вызван снова и снова,
+  // и на деле мы услышим непрерывный звук тональностью, которая
+  // зависит от количества света, попадающего на фоторезистор
+	if (value>=50){
+	   tone(BUZZER_PIN, frequency, 250);
+    }
+      
+  Serial.println(value);
+  delay(250); // wait for a quarter second
+}
+```
+
+# 7. Ping Pong Game
 <img width="1009" alt="image" src="https://github.com/yellowobelisk/IOT/assets/115936701/33883688-3327-438c-b274-55be3a38dc5c">
 
 ```
